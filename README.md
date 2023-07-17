@@ -69,20 +69,20 @@ All nodejs services related is serve on docker using `nodemon` as a changes' wat
 
 #### endpoint bidang
 
-| Type     | Path          | Description                                    |
-| :------- | :------------ | :--------------------------------------------- |
-| `POST`   | 'bidang'      | [Create Data Bidang](#create-bidang)           |
-| `GET`    | '/bidang/:id' | [Get detail Bidang with id `id`](#get-bidang)  |
-| `GET`    | 'bidang'      | [Get all list Bidang](#get-all-bidang)         |
-| `PATCH`  | '/bidang/:id' | [Update Bidang with id `:id`](#update--bidang) |
-| `DELETE` | '/bidang/:id' | [Delete Bidang with id `:id`](#delete-bidang)  |
+| Type     | Path          | Description                                                     |
+| :------- | :------------ | :-------------------------------------------------------------- |
+| `POST`   | '/bidang'     | [Create Data Bidang](#create-data-bidang)                       |
+| `GET`    | '/bidang/:id' | [Get detail Bidang with id `id`](#get-detailbidang-with-bidang) |
+| `GET`    | 'bidang'      | [Get all list Bidang](#get-all-list-bidang)                     |
+| `PATCH`  | '/bidang/:id' | [Update Bidang with id `:id`](#update-bidang-with-id)           |
+| `DELETE` | '/bidang/:id' | [Delete Bidang with id `:id`](#delete-bidang-with-id)           |
 
 #### endpoint sertifikasi
 
-| Type   | Path                       | Description                                                                          |
-| :----- | :------------------------- | :----------------------------------------------------------------------------------- |
-| `POST` | '/sertifikasi/pegawai'     | [Create Sertifikasi pegawai](#create-sertifikasi)                                    |
-| `GET`  | '/sertifikasi/pegawai/:id' | [Get detail Pegawai and sertifikat with id dataPegawai `id`](#get-sertikasi-pegawai) |
+| Type     | Path                       | Description                                                |
+| :------- | :------------------------- | :--------------------------------------------------------- |
+| `POST`   | '/sertifikasi/pegawai'     | [Create Sertifikasi](#create-sertifikasi)                  |
+| `DELETE` | '/sertifikasi/pegawai/:id' | [Delete sertifikat with id `id`](#delete-sertikat-with-id) |
 
 ## Login User
 
@@ -399,7 +399,7 @@ All nodejs services related is serve on docker using `nodemon` as a changes' wat
 [Back to list of API](#list-endpoint)
 
 ```http
-  PATCH /data/pegawai
+  PATCH /data/pegawai/:id
 ```
 
 | Header         | Type     | Description                     |
@@ -454,7 +454,7 @@ All nodejs services related is serve on docker using `nodemon` as a changes' wat
 
 | Parameter | Type     | Description                        |
 | :-------- | :------- | :--------------------------------- |
-| `id`      | `string` | **Required**. Id of User to change |
+| `id`      | `string` | **Required**. Id of User to delete |
 
 ### Response
 
@@ -486,9 +486,9 @@ All nodejs services related is serve on docker using `nodemon` as a changes' wat
 | :------------- | :------- | :------------------------------ |
 | `access_token` | `string` | **Required**. Your access_token |
 
-| Parameter | Type     | Description                                          |
-| :-------- | :------- | :--------------------------------------------------- |
-| `id`      | `STRING` | **Required**. Id of data pegawai to update to change |
+| Parameter | Type     | Description                      |
+| :-------- | :------- | :------------------------------- |
+| `id`      | `STRING` | **Required**. Id of data pegawai |
 
 ### Response
 
@@ -525,6 +525,271 @@ All nodejs services related is serve on docker using `nodemon` as a changes' wat
 			"Created_at": "DATE"
 		}
 	]
+}
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+## Create Data Bidang
+
+[Back to list of API](#list-endpoint)
+
+```http
+  POST /bidang
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Body         | Type     | Description  |
+| :----------- | :------- | :----------- |
+| `NamaBidang` | `string` | **Optional** |
+
+### Response
+
+#### OK
+
+```json
+{
+	"Id_Bidang": "STRING",
+	"NamaBidang": "STRING",
+	"Created_at": "DATE"
+}
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+## Get detail Bidang with id
+
+[Back to list of API](#list-endpoint)
+
+```http
+  GET /bidang/:id
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `STRING` | **Required**. Id of bidang |
+
+### Response
+
+#### OK
+
+```json
+{
+	"Id_Bidang": "STRING",
+	"NamaBidang": "STRING",
+	"Created_at": "DATE"
+}
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+## Get all list Bidang
+
+[Back to list of API](#list-endpoint)
+
+```http
+  GET /bidang
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+### Response
+
+#### OK
+
+```json
+[
+	{
+		"Id_Bidang": "STRING",
+		"NamaBidang": "STRING",
+		"Created_at": "DATE"
+	},
+    {
+		"Id_Bidang": "STRING",
+		"NamaBidang": "STRING",
+		"Created_at": "DATE"
+	},
+    {
+		"Id_Bidang": "STRING",
+		"NamaBidang": "STRING",
+		"Created_at": "DATE"
+	},
+    ...
+]
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+## Update Bidang with id
+
+[Back to list of API](#list-endpoint)
+
+```http
+  PATCH /bidang/:id
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `STRING` | **Required**. Id of bidang |
+
+| Body         | Type     | Description  |
+| :----------- | :------- | :----------- |
+| `NamaBidang` | `string` | **Optional** |
+
+### Response
+
+#### OK
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+## Delete Bidang with id
+
+[Back to list of API](#list-endpoint)
+
+```http
+  DELETE /bidang/:id
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `STRING` | **Required**. Id of bidang |
+
+### Response
+
+#### OK
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+## Create Sertifikasi
+
+[Back to list of API](#list-endpoint)
+
+```http
+  POST /sertifikasi/pegawai
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Body                    | Type     | Description  |
+| :---------------------- | :------- | :----------- |
+| `Id_Pegawai`            | `string` | **Required** |
+| `NamaLembaga`           | `string` | **Required** |
+| `AlamatLengkap`         | `string` | **Required** |
+| `DokumentasiSertifikat` | `file`   | **Required** |
+
+### Response
+
+#### OK
+
+```json
+{
+	"message": "STRING"
+}
+```
+
+### Error
+
+```json
+{
+	"Id_Sertifikasi": "STRING",
+	"Id_Pegawai": "STRING",
+	"NamaLembaga": "STRING",
+	"Id_Bidang": "STRING",
+	"DokumentasiSertifikat": "STRING",
+	"Created_at": "STRING"
+}
+```
+
+## Delete sertifikat with id
+
+[Back to list of API](#list-endpoint)
+
+```http
+  POST /sertifikasi/pegawai
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Parameter | Type     | Description                                          |
+| :-------- | :------- | :--------------------------------------------------- |
+| `id`      | `STRING` | **Required**. Id of data pegawai to update to change |
+
+### Response
+
+#### OK
+
+```json
+{
+	"message": "STRING"
 }
 ```
 
