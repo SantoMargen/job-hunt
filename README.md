@@ -475,3 +475,63 @@ All nodejs services related is serve on docker using `nodemon` as a changes' wat
 ```
 
 ## Get Data Pegawai Sertifikat With Id User
+
+[Back to list of API](#list-endpoint)
+
+```http
+  GET /data/pegawai/sertifikat/:id
+```
+
+| Header         | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| `access_token` | `string` | **Required**. Your access_token |
+
+| Parameter | Type     | Description                                          |
+| :-------- | :------- | :--------------------------------------------------- |
+| `id`      | `STRING` | **Required**. Id of data pegawai to update to change |
+
+### Response
+
+#### OK
+
+```json
+{
+	"Id_Pegawai": "STRING",
+	"NamaLengkap": "STRING",
+	"Tanggal": "DATE",
+	"Umur": "STRING",
+	"AlamatLengkap": "STRING",
+	"Keahlian": "STRING",
+	"LevelPekerjaan": "STRING",
+	"Kd_Provinsi": "STRING",
+	"Kd_KotaKabupaten": "STRING",
+	"Kodepos": "STRING",
+	"Created_at": "DATE",
+	"dataPegawai": [
+		{
+			"Id_Sertifikasi": "STRING",
+			"Id_Pegawai": "STRING",
+			"NamaLembaga": "STRING",
+			"Id_Bidang": "B1",
+			"DokumentasiSertifikat": "STRING",
+			"Created_at": "DATE"
+		},
+		{
+			"Id_Sertifikasi": "STRING",
+			"Id_Pegawai": "STRING",
+			"NamaLembaga": "STRING",
+			"Id_Bidang": "B1",
+			"DokumentasiSertifikat": "STRING",
+			"Created_at": "DATE"
+		}
+	]
+}
+```
+
+### Error
+
+```json
+{
+	"message": "STRING"
+}
+```
