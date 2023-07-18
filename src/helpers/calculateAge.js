@@ -1,8 +1,8 @@
 const calculateAge = (dateOfBirth) => {
     const dobParts = dateOfBirth.split('/');
-    const day = parseInt(dobParts[0], 10);
-    const month = parseInt(dobParts[1], 10) - 1; // Months are zero-based in JavaScript Date object
-    const year = parseInt(dobParts[2], 10);
+    const day = parseInt(dobParts[0]);
+    const month = parseInt(dobParts[1]);
+    const year = parseInt(dobParts[2]);
 
     const today = new Date();
     const birthDate = new Date(year, month, day);
